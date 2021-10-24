@@ -2,7 +2,7 @@
 <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Sistema de Ordem | <?php echo date('Y') ?>&nbsp; By Antonio Daleo</span>
                     </div>
                 </div>
             </footer>
@@ -55,6 +55,13 @@
     <!-- Page level custom scripts -->
     <script src="<?php echo base_url('public/js/demo/chart-area-demo.js') ?>"></script>
     <script src="<?php echo base_url('public/js/demo/chart-pie-demo.js') ?>"></script>
+
+    <?php if(isset($scripts)): ?> 
+        <?php foreach($scripts as $script):  ?>
+            <script  src="<?php echo base_url('public/'.$script); ?>"></script>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
 
 </body>
 
