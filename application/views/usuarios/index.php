@@ -34,7 +34,7 @@
                                 <th>Usuário</th>
                                 <th>Login</th>
                                 <th>Ativo</th>
-                                <th class="text-right">Ações</th>
+                                <th class="text-right no-sort">Ações</th>
                             </tr>
                         </thead>
                                     
@@ -47,7 +47,7 @@
                                             <td><?php echo $user->active ?></td>
                                             <td class="text-right">
                                                 <a href="#" title="Editar" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i>&nbsp; Editar</a>
-                                                <a href="#" title="Excluir" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i>&nbsp;  Excluir</a>
+                                                <a href="#" title="Excluir" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i>&nbsp; Excluir</a>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>
