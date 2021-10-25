@@ -46,7 +46,7 @@
                                             <td><?php echo $user->email ?></td>
                                             <td><?php echo $user->active ?></td>
                                             <td class="text-right">
-                                                <a href="#" title="Editar" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i>&nbsp; Editar</a>
+                                                <a href="<?php echo base_url('usuarios/edit/'.$user->id) ?>" title="Editar" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i>&nbsp; Editar</a>
                                                 <a href="#" title="Excluir" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i>&nbsp; Excluir</a>
                                             </td>
                                         </tr>
