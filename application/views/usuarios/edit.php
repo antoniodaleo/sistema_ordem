@@ -27,20 +27,47 @@
             </div>
             <div class="card-body">
                 <form>
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    <!-- Primeira linha-->
+                    <div class="form-group row">
+                        <div class="col-md-4">
+                            <label>Nome</label>
+                            <input type="text" name="first_name" placeholder="Seu nome" class="form-control" value="<?php echo $usuario->first_name; ?>">
+                        </div>
+                   
+                        <div class="col-md-4">
+                            <label>Sobrenome</label>
+                            <input type="text" name="last_name" placeholder="Seu sobrenome" class="form-control" value="<?php echo $usuario->last_name; ?>">
+                            
+                        </div>
+                        <div class="col-md-4">
+                            <label>Email</label>
+                            <input type="email" name="email" placeholder="Seu email" class="form-control" value="<?php echo $usuario->email; ?>">
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+
+                    <!-- Segunda linha-->
+                   <div class="form-group row">
+                        <div class="col-md-4">
+                            <label>Ativo</label>
+                            
+                            <select name="active" class="form-control" id="">
+                                <option value="0" <?php echo ($usuario->active == 0) ? 'selected': '' ?>>Não</option>
+                                <option value="1" <?php echo ($usuario->active == 1) ? 'selected' : '' ?>>Sim</option>        
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Perfil de acesso</label>
+                            
+                            <select name="perfil_usuario" class="form-control" id="">
+                                <option value="0" <?php echo ($perfil_usuario->id == 2) ? 'selected': '' ?>>Usuario</option>
+                                <option value="1" <?php echo ($perfil_usuario->id == 1) ? 'selected' : '' ?>>Administrador</option>        
+                            </select>
+                        </div>
+
+                   </div>
+
+
+                    <button type="submit" class="btn btn-primary">Salvar</button>
                 </form>
             </div>
         </div>
