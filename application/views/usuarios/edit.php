@@ -26,7 +26,7 @@
                <a title="Voltar" href="<?php echo base_url('usuarios') ?>" class="btn btn-success btn-sm float-right"><i class="fas fa-arrow-circle-left"></i>&nbsp; Voltar</a>
             </div>
             <div class="card-body">
-                <form>
+                <form method="post" name="form_edit">
                     <!-- Primeira linha-->
                     <div class="form-group row">
                         <div class="col-md-4">
@@ -47,27 +47,47 @@
 
                     <!-- Segunda linha-->
                    <div class="form-group row">
+
                         <div class="col-md-4">
-                            <label>Ativo</label>
+                            <label>Usuario</label>
+                            <input type="text" name="username" placeholder="Usuario" class="form-control" value="<?php echo $usuario->username; ?>">
                             
+                        </div>
+                        <div class="col-md-4">
+                            <label>Ativo</label>       
                             <select name="active" class="form-control" id="">
                                 <option value="0" <?php echo ($usuario->active == 0) ? 'selected': '' ?>>Não</option>
                                 <option value="1" <?php echo ($usuario->active == 1) ? 'selected' : '' ?>>Sim</option>        
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <label>Perfil de acesso</label>
-                            
+                            <label>Perfil de acesso</label>         
                             <select name="perfil_usuario" class="form-control" id="">
                                 <option value="0" <?php echo ($perfil_usuario->id == 2) ? 'selected': '' ?>>Usuario</option>
                                 <option value="1" <?php echo ($perfil_usuario->id == 1) ? 'selected' : '' ?>>Administrador</option>        
                             </select>
                         </div>
-
                    </div>
+                    
+                   <!-- Terça linha-->
+
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <label>Senha</label>
+                            <input type="password" name="password" placeholder="Sua senha" class="form-control" value="">
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <label>Confirma senha</label>
+                            <input type="password" name="confirm_password" placeholder="Confirma sua senha" class="form-control" value="">
+                        </div>
+
+                        <input type="hidden" name="usuario_id" value="<?php echo $usuario->id ?>">
+
+                    </div>
 
 
-                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Salvar</button>
                 </form>
             </div>
         </div>

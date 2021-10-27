@@ -51,9 +51,20 @@ class Usuarios extends CI_Controller{
                 'perfil_usuario' => $this->ion_auth->get_users_groups($usuario_id)->row(), 
             );
 
-            /*
-            echo '<pre>'; 
-            print_r($data['perfil_usuario']); 
+            
+            /* 
+            [first_name] => Admin
+            [last_name] => istrator
+            [email] => admin@admin.com
+            [username] => administrator
+            [active] => 1
+            [perfil_usuario] => 1
+            [password] => 
+            [confirm_password] => 
+            [usuario_id] => 1*/
+
+            /*echo '<pre>'; 
+            print_r($this->input->post()); 
             exit(); 
             */
 
