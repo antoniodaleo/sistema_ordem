@@ -32,6 +32,8 @@
                         <div class="col-md-4">
                             <label>Nome</label>
                             <input type="text" name="first_name" placeholder="Seu nome" class="form-control" value="<?php echo $usuario->first_name; ?>">
+                            <?php echo form_error('first_name', '<small class="form-text text-danger">','</small>'); ?>
+                        
                         </div>
                    
                         <div class="col-md-4">
