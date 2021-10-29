@@ -70,7 +70,7 @@
                         <div class="col-md-4">
                             <label>Perfil de acesso</label>         
                             <select name="perfil_usuario" class="form-control" id="">
-                                <option value="0" <?php echo ($perfil_usuario->id == 2) ? 'selected': '' ?>>Usuario</option>
+                                <option value="2" <?php echo ($perfil_usuario->id == 2) ? 'selected': '' ?>>Vendedor</option>
                                 <option value="1" <?php echo ($perfil_usuario->id == 1) ? 'selected' : '' ?>>Administrador</option>        
                             </select>
                         </div>
