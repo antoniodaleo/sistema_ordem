@@ -1,11 +1,20 @@
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Sistema de Ordem | <?php echo date('Y') ?>&nbsp; By Antonio Daleo</span>
+        
+        
+        <?php if(!$this->router->fetch_class() == 'login'):  ?>
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Sistema de Ordem | <?php echo date('Y') ?>&nbsp; By Antonio Daleo</span>
+                    </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        <?php endif; ?>
+        
+
+
+
+        <!-- Footer -->
+       
         <!-- End of Footer -->
 
         </div>
