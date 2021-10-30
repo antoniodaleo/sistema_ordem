@@ -69,7 +69,7 @@ class Usuarios extends CI_Controller{
             $this->form_validation->set_rules('last_name','O campo sobrenome','trim|required'); 
             $this->form_validation->set_rules('email','','trim|required|valid_email|callback_email_check'); 
             $this->form_validation->set_rules('username','','trim|required|callback_username_check'); 
-            $this->form_validation->set_rules('password','password','min_length[5]|max_length[255]'); 
+            $this->form_validation->set_rules('password','senha','min_length[5]|max_length[255]'); 
             $this->form_validation->set_rules('confirm_password','confirma','matches[password]'); 
 
 
@@ -137,6 +137,66 @@ class Usuarios extends CI_Controller{
     }
     
     public function add(){
+
+        $this->form_validation->set_rules('first_name','O campo nome','trim|required'); 
+        $this->form_validation->set_rules('last_name','O campo sobrenome','trim|required'); 
+        $this->form_validation->set_rules('email','','trim|required|valid_email|is_unique[users.email]'); 
+        $this->form_validation->set_rules('username','','trim|required|is_unique[users.username]'); 
+        $this->form_validation->set_rules('password','A senha','required|min_length[5]|max_length[255]'); 
+        $this->form_validation->set_rules('confirm_password','Confirma','matches[password]'); 
+
+
+        if($this->form_validation->run()){
+
+            $username = $this->security->xss_clean($this->input->post('username')) ;
+            $password = $this->security->xss_clean($this->input->post('password')); 
+            $email =  $this->security->xss_clean($this->input->post('email')); 
+
+            $additonal_data = array(
+                'first_name' => $this->input->post('first_name') ,
+                'last_name' => $this->input->post('last_name'),
+                'active' => $this->input->post('active'), 
+                'username' => $this->input->post('username'),
+            );
+
+            $additonal_data = $this->security->xss_clean($additonal_data); 
+
+            $group = array($this->input->post('perfil_usuario')); 
+            $group = $this->security->xss_clean($group);
+
+
+            
+            if($this->ion_auth->register($username, $password, $email , $additonal_data, $group)){
+                $this->session->set_flashdata('sucesso', 'Dados salvos com sucesso');
+            }else{
+                $this->session->set_flashdata('error','Erro ao salvar os dados'); 
+            }
+
+            redirect('usuarios'); 
+            /*  
+                echo '<pre>'; 
+                print_r($additonal_data); 
+                exit();
+            */ 
+            /*
+                Alterar config->ion_aut->linha 135
+                Alterar model->ion_auth->linha 853 (Comenta a linha para poder cadastrar o active conforme 
+                a nossa vontade)   
+            */
+
+            //exit('Validado'); 
+        }else{
+
+            $data = array(
+                'titulo' => 'Adicionar usuario', 
+            );
+            
+            $this->load->view('layout/header',$data); 
+            $this->load->view('usuarios/add'); 
+            $this->load->view('layout/footer'); 
+        }
+
+        
         
     }
     
