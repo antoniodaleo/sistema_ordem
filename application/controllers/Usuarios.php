@@ -201,16 +201,19 @@ class Usuarios extends CI_Controller{
     }
 
     public function del($usuario_id = null){
+        // Se ID ou Usuario non esiste, dai erro
         if(!$usuario_id || !$this->ion_auth->user($usuario_id)->row()){
             $this->session->set_flashdata('error', 'Usuario não encontrado'); 
             redirect('usuarios'); 
         }
 
+        // Se l Usuario é ADMIN, dai erro
         if($this->ion_auth->is_admin($usuario_id)){
             $this->session->set_flashdata('error','O administrador não pode ser excluido'); 
             redirect('usuarios'); 
         }
 
+        // Se le 2 condizioni sono Ok, allora deleta l usuario
         if($this->ion_auth->delete_user($usuario_id)){
             $this->session->set_flashdata('sucesso','Registro excluido com sucesso'); 
             redirect('usuarios'); 
