@@ -61,6 +61,7 @@
                                 <th>#</th>
                                 <th>Usuário</th>
                                 <th>Login</th>
+                                <th>Perfil</th>
                                 <th>Ativo</th>
                                 <th class="text-right no-sort">Ações</th>
                             </tr>
@@ -72,10 +73,11 @@
                                             <td><?php echo $user->id ?></td>
                                             <td><?php echo $user->username ?></td>
                                             <td><?php echo $user->email ?></td>
+                                            <td><?php echo ($this->ion_auth->is_admin($user->id) ? 'Administador' : 'Vendedor'); ?></td>
                                             <td class="text-center pr-2"><?php echo ($user->active == 1 ? '<span class="badge badge-primary btn-sm">Sim</span>' : '<span class="badge badge-warning btn-sm">Não</span>' ) ?></td>
                                             <td class="text-right">
                                                 <a href="<?php echo base_url('usuarios/edit/'.$user->id) ?>" title="Editar" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i>&nbsp; Editar</a>
-                                                <a href="#" title="Excluir" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i>&nbsp; Excluir</a>
+                                                <a href="<?php echo base_url('usuarios/del/'.$user->id) ?>" title="Excluir" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i>&nbsp; Excluir</a>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>
