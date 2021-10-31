@@ -36,7 +36,7 @@
                 <div class="modal-body">Clique em "Logout" para encerrar a sessão.</div>
                 <div class="modal-footer" >
                     <button class="btn btn-secondary btn-sm" type="button" data-dismiss="modal">Não</button>
-                    <a class="btn btn-primary btn-sm" href="<?php base_url('login/logout') ?>">Sair</a>
+                    <a class="btn btn-primary btn-sm" href="<?php echo base_url('login/logout') ?>">Sair</a>
                 </div>
             </div>
         </div>
