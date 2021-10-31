@@ -26,7 +26,7 @@ class Usuarios extends CI_Controller{
             'scripts' => array(
                 'vendor/datatables/jquery.dataTables.min.js',
                 'vendor/datatables/dataTables.bootstrap4.min.js',
-                'vendor/datatables/app.js'
+                'vendor/datatables/app.js',
             ),
 
 
