@@ -72,13 +72,13 @@
 
 <!-- Nav Item - Tables -->
 <li class="nav-item">
-    <a title="Gerenciar Usuarios" class="nav-link" href="<?php base_url('usuarios') ?>">
+    <a title="Gerenciar Usuarios" class="nav-link" href="<?php echo base_url('usuarios') ?>">
         <i class="fas fa-users"></i><span>Usuarios</span>
     </a>
 </li>
 
 <li class="nav-item">
-    <a title="Gerenciar Sistema" class="nav-link" href="<?php base_url('sistema') ?>">
+    <a title="Gerenciar Sistema" class="nav-link" href="<?php echo  base_url('sistema') ?>">
         <i class="fas fa-cogs"></i><span>Sistema</span>
     </a>
 </li>
