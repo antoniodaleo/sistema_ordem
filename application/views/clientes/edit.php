@@ -24,41 +24,57 @@
         <div class="card shadow mb-4">
             <div class="card-body">
                 <form method="post" name="form_edit" class="user">
-                    <!-- Primeira linha-->
                     
+                    <p><strong><i class="fas fa-clock"></i>&nbsp; Última alteração: <?php echo formata_data_banco_com_hora($cliente->cliente_data_alteracao) ;  ?> </strong></p>
+                
+                    <!-- Primeira linha-->
                     <fieldset class="mt-4 border p-2">
 
                         <legend class="font-small" ><i class="fas fa-user-tie"></i>&nbsp; Dados Pessoais</legend>
   
                         <div class="form-group row">
-                            <div class="col-md-5">
+                            <div class="col-md-3">
                                 <label>Nome </label>
                                 <input type="text" name="cliente_nome" placeholder="Nome do cliente" class="form-control form-control-user" value="<?php echo $cliente->cliente_nome; ?>">
                                 <?php echo form_error('cliente_nome', '<small class="form-text text-danger">','</small>'); ?>
                             </div>        
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <label>Sobrenome</label>
                                 <input type="text" name="cliente_sobrenome" placeholder="Sobrenome do cliente" class="form-control form-control-user" value="<?php echo $cliente->cliente_sobrenome; ?>">
                                 <?php echo form_error('cliente_sobrenome', '<small class="form-text text-danger">','</small>'); ?>
                             </div>
                            
 
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <label>Data de Nascimento</label>
-                                <input type="date" name="cliente_data_nascimento" class="form-control form-control-user" value="<?php echo $cliente->cliente_data_nascimento; ?>">
+                                <input type="date" name="cliente_data_nascimento" class="form-control form-control-user-date" value="<?php echo $cliente->cliente_data_nascimento; ?>">
                                 <?php echo form_error('cliente_data_nascimento', '<small class="form-text text-danger">','</small>'); ?>
                             </div> 
                         </div>
 
                         <div class="form-group row">
                             <div class="col-md-3">
-                                <label>CPF ou CNPJ</label>
-                                <input type="text" name="cliente_cpf_cnpj" placeholder="CPF | CNPJ" class="form-control form-control-user cnpj" value="<?php echo $cliente->cliente_cpf_cnpj; ?>">
-                                <?php echo form_error('cliente_cpf_cnpj', '<small class="form-text text-danger">','</small>'); ?>
+                                <?php if($cliente->cliente_tipo == 1): ?>
+                                    <label>CPF</label>
+                                    <input type="text" name="cliente_cpf" placeholder="<?php echo ($cliente->cliente_tipo == 1 ? 'CPF do cliente' : 'CNPJ') ?>" class="form-control form-control-user cpf" value="<?php echo $cliente->cliente_cpf_cnpj; ?>">
+                                    <?php echo form_error('cliente_cpf', '<small class="form-text text-danger">','</small>'); ?>
+
+                                <?php else: ?>
+                                    <label>CNPJ</label>
+                                    <input type="text" name="cliente_cnpj" placeholder="<?php echo ($cliente->cliente_tipo == 1 ? 'CPF do cliente' : 'CNPJ') ?>" class="form-control form-control-user cpf" value="<?php echo $cliente->cliente_cpf_cnpj; ?>">
+                                    <?php echo form_error('cliente_cnpj', '<small class="form-text text-danger">','</small>'); ?>
+
+                                <?php endif; ?>
                             </div>
+
                             <div class="col-md-3">
-                                <label>RG ou I.E.</label>
-                                <input type="text" name="cliente_rg_ie" placeholder="RG ie" class="form-control form-control-user" value="<?php echo $cliente->cliente_rg_ie; ?>">
+                                <?php if($cliente->cliente_tipo == 1): ?>
+                                    <label>RG</label>
+                                <?php else: ?>
+                                    <label>I.E.</label>
+                                <?php endif; ?>
+                                
+                                <input type="text" name="cliente_rg_ie" placeholder="<?php echo ($cliente->cliente_tipo == 1 ? 'Rg do cliente' : 'I.E. do cliente') ?>" class="form-control form-control-user" value="<?php echo $cliente->cliente_rg_ie; ?>">
                                 <?php echo form_error('cliente_rg_ie', '<small class="form-text text-danger">','</small>'); ?>
                             </div> 
                             <div class="col-md-6">
@@ -83,6 +99,7 @@
 
                     </fieldset>
 
+                    <!-- Segunda linha-->
                     <fieldset class="mt-4 border p-2">
                         <legend class="font-small" ><i class="fas fa-map-marker-alt"></i>&nbsp; Endereço do cliente</legend>
                         
@@ -140,7 +157,7 @@
                         <div class="form-group row">
                             <div class="col-md-2">
                                 <label>Cliente ativo</label>
-                                <select name="cliente_ativo" class="form-control ">
+                                <select name="cliente_ativo" class="custom-select ">
                                     <option value="0" <?php ($cliente->cliente_ativo == 0 ? 'selected' : '' ) ?> >Não</option>
                                     <option value="1" <?php ($cliente->cliente_ativo == 1 ? 'selected' : '' ) ?> >Sim</option>
                                 </select>
