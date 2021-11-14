@@ -51,13 +51,13 @@ class Clientes extends CI_Controller{
             $this->form_validation->set_rules('cliente_data_nascimento','','required');
 
             $cliente_tipo = $this->input->post('cliente_tipo'); 
- /* 
+ 
             if($cliente_tipo == 1 ){
                 $this->form_validation->set_rules('cliente_cpf','','trim|required|exact_length[18]|callback_valida_cpf');
             }else{
                 $this->form_validation->set_rules('cliente_cnpj','','trim|required|exact_length[20]|callback_valida_cnpj');
             }
-*/
+
             $this->form_validation->set_rules('cliente_rg_ie','','trim|required|max_length[20]|callback_ceck_rg_ie');
             $this->form_validation->set_rules('cliente_email','','trim|required|valid_email|max_length[50]|callback_ceck_email');
   
